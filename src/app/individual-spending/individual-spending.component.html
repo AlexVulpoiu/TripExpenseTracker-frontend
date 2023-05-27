@@ -1,0 +1,41 @@
+<div class="col-md-12">
+  <br/>
+
+  <h1>Add individual spending</h1>
+
+  <hr/>
+
+  <form [formGroup]="addIndividualSpendingForm" (ngSubmit)="addIndividualSpending()">
+    <div class="form-group row">
+      <label for="trip" class="col-sm-2">Trip</label>
+      <div class="col-sm-6">
+        <select class="form-control" formControlName="trip" id="trip">
+          <option *ngFor="let t of trips" value="{{t.id}}">
+            {{t.title + ', ' + t.location + ', ' + t.startDate + ' -> ' + t.endDate}}
+          </option>
+        </select>
+        <div *ngIf="addIndividualSpendingForm.controls.trip?.touched && addIndividualSpendingForm.controls.trip?.errors?.required"
+             class="invalid-feedback">
+          Trip is required!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="amount" class="col-sm-2">Amount</label>
+      <div class="col-sm-6">
+        <input type="number" min="1" class="form-control" formControlName="amount" id="amount">
+        <div *ngIf="addIndividualSpendingForm.controls.amount?.touched && addIndividualSpendingForm.controls.amount?.errors?.required"
+             class="invalid-feedback">
+          Spending amount is required!
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-success" [disabled]="addIndividualSpendingForm.invalid">
+        Save spending &nbsp; <i class="bi bi-cash-stack"></i>
+      </button>
+    </div>
+  </form>
+</div>

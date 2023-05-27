@@ -1,0 +1,23 @@
+<div class="col-md-12">
+  <br/>
+
+  <h1>Add spending</h1>
+
+  <hr/>
+
+  <div>
+    <button type="button" class="btn btn-primary" [routerLink]="'/individual-spending'">Add individual spending &nbsp; <i class="bi bi-person-fill"></i></button>
+    &nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-primary"[routerLink]="'/group-spending'">Add group spending &nbsp; <i class="bi bi-people-fill"></i></button>
+  </div>
+
+  <br/>
+  <br/>
+  <br/>
+
+  <h1>Generate personal spendings report</h1>
+
+  <hr/>
+
+  <button type="button" class="btn btn-success" (click)="generateIndividualSpendingReport()">Download report &nbsp; <i class="bi bi-cloud-arrow-down-fill"></i></button>
+</div>

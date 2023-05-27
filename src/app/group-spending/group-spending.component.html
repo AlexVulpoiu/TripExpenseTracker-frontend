@@ -1,0 +1,52 @@
+<div class="col-md-12">
+  <br/>
+
+  <h1>Add group spending</h1>
+
+  <hr/>
+
+  <form [formGroup]="addGroupSpendingForm" (ngSubmit)="addGroupSpending()">
+    <div class="form-group row">
+      <label for="trip" class="col-sm-2">Trip</label>
+      <div class="col-sm-6">
+        <select class="form-control" formControlName="trip" id="trip" (ngModelChange)="onTripChange($event)">
+          <option *ngFor="let t of trips" value="{{t.id}}">
+            {{t.title + ', ' + t.location + ', ' + t.startDate + ' -> ' + t.endDate}}
+          </option>
+        </select>
+        <div *ngIf="addGroupSpendingForm.controls.trip?.touched && addGroupSpendingForm.controls.trip?.errors?.required"
+             class="invalid-feedback">
+          Trip is required!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="users" class="col-sm-2">Participants</label>
+      <div class="col-sm-6">
+        <p-multiSelect [options]="tripUsers" formControlName="users" id="users" optionValue="id" optionLabel="nameAndEmail"></p-multiSelect>
+        <div *ngIf="addGroupSpendingForm.controls.users?.touched && addGroupSpendingForm.controls.users?.errors?.required"
+             class="invalid-feedback">
+          Participants for this spending are required!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="amount" class="col-sm-2">Amount</label>
+      <div class="col-sm-6">
+        <input type="number" min="1" class="form-control" formControlName="amount" id="amount">
+        <div *ngIf="addGroupSpendingForm.controls.amount?.touched && addGroupSpendingForm.controls.amount?.errors?.required"
+             class="invalid-feedback">
+          Spending amount is required!
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-success" [disabled]="addGroupSpendingForm.invalid">
+        Save spending &nbsp; <i class="bi bi-cash-stack"></i>
+      </button>
+    </div>
+  </form>
+</div>
