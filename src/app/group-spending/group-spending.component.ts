@@ -48,7 +48,7 @@ export class GroupSpendingComponent implements OnInit {
   }
 
   onTripChange(newTrip: number) {
-    let data = new Array();
+    let data = new Array<UserDto>();
     if (this.trips) {
       for (let t of this.trips) {
         if (t.id.toString() === newTrip.toString()) {
