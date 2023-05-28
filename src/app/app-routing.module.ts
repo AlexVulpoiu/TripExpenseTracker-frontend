@@ -7,8 +7,13 @@ import {SpendingsComponent} from "./spendings/spendings.component";
 import {IndividualSpendingComponent} from "./individual-spending/individual-spending.component";
 import {GroupSpendingComponent} from "./group-spending/group-spending.component";
 import {AddTripComponent} from "./add-trip/add-trip.component";
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+  },
   {
     path: 'login',
     component: LoginComponent

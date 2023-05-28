@@ -28,7 +28,7 @@ export class AppComponent {
         console.log(res);
         this.storageService.clean();
 
-        window.location.reload();
+        window.location.href="/login";
       },
       error: err => {
         console.log(err);

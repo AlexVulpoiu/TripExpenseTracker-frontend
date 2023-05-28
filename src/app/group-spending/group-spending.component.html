@@ -24,7 +24,12 @@
     <div class="form-group row">
       <label for="users" class="col-sm-2">Participants</label>
       <div class="col-sm-6">
-        <p-multiSelect [options]="tripUsers" formControlName="users" id="users" optionValue="id" optionLabel="nameAndEmail"></p-multiSelect>
+<!--        <p-multiSelect [style]="{width: '100%'}" class="form-control" [options]="tripUsers" formControlName="users" id="users" optionValue="id" optionLabel="nameAndEmail"></p-multiSelect>-->
+        <select class="form-control" multiple="multiple" formControlName="users" id="users">
+          <option *ngFor="let u of tripUsers" value="{{u.id}}">
+            {{u.username + " (" + u.email + ")"}}
+          </option>
+        </select>
         <div *ngIf="addGroupSpendingForm.controls.users?.touched && addGroupSpendingForm.controls.users?.errors?.required"
              class="invalid-feedback">
           Participants for this spending are required!
