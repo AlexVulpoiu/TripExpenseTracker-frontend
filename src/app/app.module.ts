@@ -18,6 +18,7 @@ import { GroupSpendingComponent } from './group-spending/group-spending.componen
 import {MultiSelectModule} from "primeng/multiselect";
 import {AddTripComponent} from "./add-trip/add-trip.component";
 import { HomeComponent } from './home/home.component';
+import {TripDetailsComponent} from "./trip-details/trip-details.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HomeComponent } from './home/home.component';
     IndividualSpendingComponent,
     GroupSpendingComponent,
     AddTripComponent,
-    HomeComponent
+    HomeComponent,
+    TripDetailsComponent,
   ],
   imports: [
     BrowserModule,
