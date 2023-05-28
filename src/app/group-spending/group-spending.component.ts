@@ -15,7 +15,7 @@ export class GroupSpendingComponent implements OnInit {
   public addGroupSpendingForm: FormGroup = this.fb.group({});
   @Input() public trip: number;
   public trips: Array<TripDto> | null = null;
-  public tripUsers: Array<Object> = new Array<Object>();
+  public tripUsers: Array<UserDto> = new Array<UserDto>();
   public dropdownSettings = {};
 
   constructor(private fb: FormBuilder, private tripService: TripService, private toasterService: ToastrService) {
@@ -59,12 +59,7 @@ export class GroupSpendingComponent implements OnInit {
     } else {
       data = new Array<UserDto>();
     }
-    this.tripUsers = data.map(obj => {
-      return {
-        id: obj.id,
-        nameAndEmail: obj.username + "(" + obj.email + ")"
-      }
-    });
+    this.tripUsers = data;
     this.addGroupSpendingForm.patchValue({
       users: ''
     });
