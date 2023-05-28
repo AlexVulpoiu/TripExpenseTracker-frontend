@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <br/>
+  <br />
 
   <ng-container *ngIf="trip">
     <h1>Trip {{ trip.title }}</h1>
@@ -7,7 +7,7 @@
       Leave trip &nbsp;<i class="bi bi-door-open text-danger"></i>
     </strong>
 
-    <hr/>
+    <hr />
     <p>
       <strong>Location:</strong>
       {{ trip.location }}
@@ -21,7 +21,7 @@
       {{ trip.endDate }}
     </p>
 
-    <hr/>
+    <hr />
     <h3>Trip members</h3>
     <p class="my-4" *ngIf="userListOpen === false">
       <strong role="button" (click)="openUserList()">
@@ -44,7 +44,7 @@
               </option>
             </select>
             <div *ngIf="addUserToTripForm.controls.users?.touched && addUserToTripForm.controls.users?.errors?.required"
-                 class="invalid-feedback">
+              class="invalid-feedback">
               Participants for this trip are required!
             </div>
           </div>
@@ -69,10 +69,12 @@
         <td>{{ user.username }}</td>
         <td>
           <i *ngIf="user.id !== currentUser.id" class="bi bi-trash text-danger" role="button"
-             (click)="removeUser(user.id)"></i>
+            (click)="removeUser(user.id)"></i>
         </td>
       </tr>
     </table>
+    <button type="button" class="btn btn-success" (click)="generateTripSpendingReport()">Download report &nbsp; <i
+        class="bi bi-cloud-arrow-down-fill"></i></button>
   </ng-container>
 
 </div>

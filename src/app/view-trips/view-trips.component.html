@@ -5,22 +5,21 @@
 
     <hr />
 
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Location</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let x of trips">
-                <td><a [routerLink]="['/trips', x.id ]">{{ x.title }}</a></td>
-                <td>{{ x.location }}</td>
-                <td>{{ x.startDate }}</td>
-                <td>{{ x.endDate }}</td>
-            </tr>
-        </tbody>
+    <button type="button" class="btn btn-primary" [routerLink]="'/trips/add'">Add Trip</button>
+
+
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+        <tr *ngFor="let x of trips">
+            <td><a [routerLink]="['/trips', x.id ]">{{ x.title }}</a></td>
+            <td>{{ x.location }}</td>
+            <td>{{ x.startDate }}</td>
+            <td>{{ x.endDate }}</td>
+        </tr>
     </table>
 </div>

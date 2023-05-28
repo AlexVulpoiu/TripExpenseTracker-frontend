@@ -1,12 +1,14 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {TripService} from "../_services/tripService/trip.service";
-import {ToastrService} from "ngx-toastr";
-import {ActivatedRoute} from "@angular/router";
-import {TripDto} from "../dto/trip.dto";
-import {StorageService} from "../_services/storageService/storage.service";
-import {UserDto} from "../dto/user.dto";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../_services/userService/user.service";
+import { Component, Input, OnInit } from '@angular/core';
+import { TripService } from "../_services/tripService/trip.service";
+import { ToastrService } from "ngx-toastr";
+import { ActivatedRoute } from "@angular/router";
+import { TripDto } from "../dto/trip.dto";
+import { StorageService } from "../_services/storageService/storage.service";
+import { UserDto } from "../dto/user.dto";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UserService } from "../_services/userService/user.service";
+import { ExportService } from "../_services/exportService/export.service";
+
 
 @Component({
   selector: 'trip-details',
@@ -21,11 +23,12 @@ export class TripDetailsComponent implements OnInit {
   public addUserToTripForm: FormGroup = this.fb.group({});
 
   constructor(private fb: FormBuilder,
-              private storageService: StorageService,
-              private route: ActivatedRoute,
-              private tripService: TripService,
-              private userService: UserService,
-              private toasterService: ToastrService
+    private storageService: StorageService,
+    private route: ActivatedRoute,
+    private tripService: TripService,
+    private userService: UserService,
+    private toasterService: ToastrService,
+    private exportService: ExportService
   ) {
     const successMessage = sessionStorage.getItem("success");
     if (successMessage) {
@@ -52,8 +55,8 @@ export class TripDetailsComponent implements OnInit {
     this.userListOpen = false;
 
     this.addUserToTripForm = this.fb.group({
-        users: ['', Validators.required]
-      }
+      users: ['', Validators.required]
+    }
     );
   }
 
@@ -98,5 +101,9 @@ export class TripDetailsComponent implements OnInit {
           this.toasterService.error("There was an error when adding user: " + error);
         }
       );
+  }
+
+  generateTripSpendingReport(): void {
+    this.exportService.generateTripSpendingReport(this.trip.id);
   }
 }
