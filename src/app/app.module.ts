@@ -16,6 +16,7 @@ import { IndividualSpendingComponent } from './individual-spending/individual-sp
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { GroupSpendingComponent } from './group-spending/group-spending.component';
 import {MultiSelectModule} from "primeng/multiselect";
+import {AddTripComponent} from "./add-trip/add-trip.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MultiSelectModule} from "primeng/multiselect";
     ProfileComponent,
     SpendingsComponent,
     IndividualSpendingComponent,
-    GroupSpendingComponent
+    GroupSpendingComponent,
+    AddTripComponent,
   ],
   imports: [
     BrowserModule,

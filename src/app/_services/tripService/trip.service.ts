@@ -30,4 +30,10 @@ export class TripService {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.storageService.getUser().token)
     });
   }
+
+  addTrip(data: any) {
+    return this.http.post<MessageResponse>(TRIPS_API + "/add", data, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.storageService.getUser().token)
+    });
+  }
 }
