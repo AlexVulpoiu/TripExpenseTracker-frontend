@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {ProfileComponent} from "./profile/profile.component";
@@ -8,6 +8,7 @@ import {IndividualSpendingComponent} from "./individual-spending/individual-spen
 import {GroupSpendingComponent} from "./group-spending/group-spending.component";
 import {AddTripComponent} from "./add-trip/add-trip.component";
 import {HomeComponent} from "./home/home.component";
+import {TripDetailsComponent} from "./trip-details/trip-details.component";
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'trips/add',
     component: AddTripComponent
+  },
+  {
+    path: 'trips/:id',
+    component: TripDetailsComponent,
   }
 ];
 
@@ -48,4 +53,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

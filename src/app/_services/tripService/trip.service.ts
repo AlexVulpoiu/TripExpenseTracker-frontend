@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {TripDto} from "../../dto/trip.dto";
 import {StorageService} from "../storageService/storage.service";
@@ -11,10 +11,29 @@ const TRIPS_API = "http://localhost:8080/trips";
 })
 export class TripService {
 
-  constructor(private http: HttpClient, private storageService: StorageService) { }
+  constructor(private http: HttpClient, private storageService: StorageService) {
+  }
 
   getTripsForUser() {
     return this.http.get<Array<TripDto>>(TRIPS_API, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.storageService.getUser().token)
+    });
+  }
+
+  getTripForUser(tripId: number) {
+    return this.http.get<TripDto>(TRIPS_API + "/" + tripId, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.storageService.getUser().token)
+    });
+  }
+
+  addUser(tripId: number, usersIds: Array<number>) {
+    return this.http.post<MessageResponse>(TRIPS_API + "/" + tripId + "/addUsers", {'users': usersIds}, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.storageService.getUser().token)
+    });
+  }
+
+  removeUser(tripId: number, userId: number) {
+    return this.http.delete<MessageResponse>(TRIPS_API + "/" + tripId + "/deleteUser/" + userId, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.storageService.getUser().token)
     });
   }
