@@ -1,19 +1,78 @@
 <div class="col-md-12">
   <br/>
 
-  <h1>Trip {{ trip.title }}</h1>
+  <ng-container *ngIf="trip">
+    <h1>Trip {{ trip.title }}</h1>
+    <strong role="button" (click)="removeUser(currentUser.id)">
+      Leave trip &nbsp;<i class="bi bi-door-open text-danger"></i>
+    </strong>
 
-  <hr/>
-  <p>
-    <strong>Location:</strong>
-    {{ trip.location }}
-  </p>
-  <p>
-    <strong>Start Date:</strong>
-    {{ trip.startDate }}
-  </p>
-  <p>
-    <strong>End Date:</strong>
-    {{ trip.endDate }}
-  </p>
+    <hr/>
+    <p>
+      <strong>Location:</strong>
+      {{ trip.location }}
+    </p>
+    <p>
+      <strong>Start Date:</strong>
+      {{ trip.startDate }}
+    </p>
+    <p>
+      <strong>End Date:</strong>
+      {{ trip.endDate }}
+    </p>
+
+    <hr/>
+    <h3>Trip members</h3>
+    <p class="my-4" *ngIf="userListOpen === false">
+      <strong role="button" (click)="openUserList()">
+        Add new user to trip &nbsp;<i class="bi bi-plus-circle text-success"></i>
+      </strong>
+    </p>
+
+
+    <div *ngIf="userListOpen === true && users" class="my-4">
+      <strong role="button" (click)="userListOpen = false">
+        Close &nbsp;<i class="bi bi-x-circle text-warning"></i>
+      </strong>
+      <form [formGroup]="addUserToTripForm" (ngSubmit)="addUsers()" *ngIf="users.length">
+        <div class="form-group row">
+          <label for="users" class="col-sm-2">Select users that are not part of this trip:</label>
+          <div class="col-sm-6">
+            <select class="form-control" multiple="multiple" formControlName="users" id="users">
+              <option *ngFor="let user of users" value="{{user.id}}">
+                {{user.username + " (" + user.email + ")"}}
+              </option>
+            </select>
+            <div *ngIf="addUserToTripForm.controls.users?.touched && addUserToTripForm.controls.users?.errors?.required"
+                 class="invalid-feedback">
+              Participants for this trip are required!
+            </div>
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-success" [disabled]="addUserToTripForm.invalid">
+            Add users &nbsp; <i class="bi bi-people"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+    <table class="table">
+      <tr>
+        <td>Number</td>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let user of trip.usersDto; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>
+          <i *ngIf="user.id !== currentUser.id" class="bi bi-trash text-danger" role="button"
+             (click)="removeUser(user.id)"></i>
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+
 </div>
