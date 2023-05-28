@@ -1,0 +1,26 @@
+<div class="col-md-12">
+    <br />
+
+    <h1>Trips</h1>
+
+    <hr />
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of trips">
+                <td><a [routerLink]="['/trips', x.id ]">{{ x.title }}</a></td>
+                <td>{{ x.location }}</td>
+                <td>{{ x.startDate }}</td>
+                <td>{{ x.endDate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -19,6 +19,7 @@ import {MultiSelectModule} from "primeng/multiselect";
 import {AddTripComponent} from "./add-trip/add-trip.component";
 import { HomeComponent } from './home/home.component';
 import {TripDetailsComponent} from "./trip-details/trip-details.component";
+import { ViewTripsComponent } from './view-trips/view-trips.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {TripDetailsComponent} from "./trip-details/trip-details.component";
     AddTripComponent,
     HomeComponent,
     TripDetailsComponent,
+    ViewTripsComponent,
   ],
   imports: [
     BrowserModule,

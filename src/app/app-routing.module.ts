@@ -1,14 +1,15 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {LoginComponent} from "./login/login.component";
-import {RegisterComponent} from "./register/register.component";
-import {ProfileComponent} from "./profile/profile.component";
-import {SpendingsComponent} from "./spendings/spendings.component";
-import {IndividualSpendingComponent} from "./individual-spending/individual-spending.component";
-import {GroupSpendingComponent} from "./group-spending/group-spending.component";
-import {AddTripComponent} from "./add-trip/add-trip.component";
-import {HomeComponent} from "./home/home.component";
-import {TripDetailsComponent} from "./trip-details/trip-details.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from "./login/login.component";
+import { RegisterComponent } from "./register/register.component";
+import { ProfileComponent } from "./profile/profile.component";
+import { SpendingsComponent } from "./spendings/spendings.component";
+import { IndividualSpendingComponent } from "./individual-spending/individual-spending.component";
+import { GroupSpendingComponent } from "./group-spending/group-spending.component";
+import { AddTripComponent } from "./add-trip/add-trip.component";
+import { HomeComponent } from "./home/home.component";
+import { TripDetailsComponent } from "./trip-details/trip-details.component";
+import { ViewTripsComponent } from './view-trips/view-trips.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'trips/:id',
     component: TripDetailsComponent,
+  },
+  {
+    path: 'trips',
+    component: ViewTripsComponent
   }
 ];
 
