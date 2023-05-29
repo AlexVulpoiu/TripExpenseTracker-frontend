@@ -38,8 +38,7 @@ export class AddTripComponent implements OnInit {
     this.tripService.addTrip(data)
       .subscribe(
         () => {
-          // TODO: change to lead to trip / trips page
-          window.location.href = "/spendings";
+          window.location.href = "/trips";
           sessionStorage.setItem("tripAdded", "Trip added successfully!");
         },
         error => {

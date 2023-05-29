@@ -12,6 +12,11 @@ export class ViewTripsComponent implements OnInit {
   public trips: Array<TripDto> | null = null;
 
   constructor(private tripService: TripService, private toasterService: ToastrService) {
+    const message = sessionStorage.getItem("tripAdded");
+    if (message !== null && message !== undefined) {
+      toasterService.success(message);
+      sessionStorage.removeItem("tripAdded");
+    }
   }
   ngOnInit() {
     this.tripService.getTripsForUser()
